@@ -15,6 +15,8 @@ V6L11BWkpzGXSW4Hv43qa+GSYOD2QU68Mb59oSk2OB+BtOLpJofmbGEGgvmwyCI9
 MwIDAQAB
 -----END PUBLIC KEY-----'''
 
+Log = open("LogDados.txt","w")
+
 
 def token_required(something):
     def wrap(cantidad):
@@ -25,30 +27,40 @@ def token_required(something):
                     jwt.decode(token_passed, public_key, algorithms='RS256')
                     tiros = tiro(cantidad)
                     data = {'dados': tiros}
+                    print(str(data), "COD: 200;")
+                    Log.write(str(data), "COD: 200;"+"\n")
                     return app.response_class(response=json.dumps(dict(data)), mimetype='application/json'), 200
                 except jwt.exceptions.ExpiredSignatureError:
                     return_data = {
                         "error": "1",
                         "message": "Token has expired"
                     }
-                    return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 401
+                    print(str(return_data), "COD: 403;")
+                    Log.write(str(return_data), "COD: 403;"+"\n")
+                    return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 403
                 except:
                     return_data = {
                         "error": "1",
                         "message": "Invalid Token"
                     }
-                    return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 401
+                    print(str(return_data), "COD: 403;")
+                    Log.write(str(return_data), "COD: 403;"+"\n")
+                    return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 403
             else:
                 return_data = {
                     "error": "2",
                     "message": "Token required",
                 }
-                return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 401
+                print(str(return_data), "COD: 403;")
+                Log.write(str(return_data), "COD: 403;"+"\n")
+                return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 403
         except Exception as e:
             return_data = {
                 "error": "3",
                 "message": str(e)
             }
+            print(str(return_data), "COD: 500;")
+            Log.write(str(return_data), "COD: 500;"+"\n")
             return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 500
 
     return wrap
