@@ -37,7 +37,7 @@ def token_required(something):
                     }
                     print(str(return_data), "COD: 403;")
                     Log.write(str(return_data), "COD: 403;"+"\n")
-                    return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 403
+                    return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 400
                 except:
                     return_data = {
                         "error": "1",
@@ -45,7 +45,7 @@ def token_required(something):
                     }
                     print(str(return_data), "COD: 403;")
                     Log.write(str(return_data), "COD: 403;"+"\n")
-                    return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 403
+                    return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 400
             else:
                 return_data = {
                     "error": "2",
@@ -53,7 +53,7 @@ def token_required(something):
                 }
                 print(str(return_data), "COD: 403;")
                 Log.write(str(return_data), "COD: 403;"+"\n")
-                return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 403
+                return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 400
         except Exception as e:
             return_data = {
                 "error": "3",
