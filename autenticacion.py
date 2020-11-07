@@ -13,7 +13,7 @@ kces0n61Ct4LkRe89peS8m4tGQluRG8A5giFgf+vYFpUMP+kiob7shCe+d6oN3Xd
 H5Hi9PHiT5hC/jVtAgMBAAE=
 -----END PUBLIC KEY-----'''
 
-Log = open("LogDados.txt", "w")
+Log = open("LogDados.txt", "a")
 
 
 def token_required(something):
