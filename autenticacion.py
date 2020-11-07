@@ -27,6 +27,7 @@ def token_required(something):
                     data = {'dados': tiros}
                     now = datetime.now()
                     print(str(now)+str(data), "COD: 200;")
+                    Log = open("LogDados.txt", "a")
                     Log.write(str(now)+" "+str(data) + "COD: 200;"+"\n")
                     Log.close()
                     return app.response_class(response=json.dumps(dict(data)), mimetype='application/json'), 200
@@ -37,6 +38,7 @@ def token_required(something):
                     }
                     now = datetime.now()
                     print(str(now)+str(return_data), "COD: 400;")
+                    Log = open("LogDados.txt", "a")
                     Log.write(str(now)+" "+str(return_data) + "COD: 400;"+"\n")
                     Log.close()
                     return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 400
@@ -47,6 +49,7 @@ def token_required(something):
                     }
                     now = datetime.now()
                     print(str(now)+str(return_data), "COD: 400;")
+                    Log = open("LogDados.txt", "a")
                     Log.write(str(now)+" "+str(return_data) + "COD: 400;"+"\n")
                     Log.close()
                     return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 400
@@ -57,6 +60,7 @@ def token_required(something):
                 }
                 now = datetime.now()
                 print(str(now)+str(return_data), "COD: 400;")
+                Log = open("LogDados.txt", "a")
                 Log.write(str(now)+" "+str(return_data) + "COD: 400;"+"\n")
                 Log.close()
                 return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 400
@@ -67,6 +71,7 @@ def token_required(something):
             }
             now = datetime.now()
             print(str(now)+str(return_data), "COD: 500;")
+            Log = open("LogDados.txt", "a")
             Log.write(str(now)+" "+str(return_data) + "COD: 500;"+"\n")
             Log.close()
             return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 500
