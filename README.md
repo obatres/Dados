@@ -31,5 +31,11 @@
 
 ## Historial de versiones
 * 1.0
-  * *CAMBIO: Creacion de contenedores, de servidor y pruebas unitarias, contruccion del codigo interpretado en Travis. 
-
+  * *CAMBIO: Creacion de contenedores, de servidor y pruebas unitarias, contruccion del codigo interpretado en Travis.
+ * 1.1
+   * *CAMBIO: Agregado el log
+*  1.1.1
+   * *CAMBIO: codigos de respuesta
+  *  1.1.2
+     * *CAMBIO: dia y hora en el log, llave publica del grupo correspondiente para la calificacion general
+       
