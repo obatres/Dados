@@ -28,6 +28,7 @@ def token_required(something):
                     now = datetime.now()
                     print(str(now)+str(data), "COD: 200;")
                     Log.write(str(now)+" "+str(data) + "COD: 200;"+"\n")
+                    Log.close()
                     return app.response_class(response=json.dumps(dict(data)), mimetype='application/json'), 200
                 except jwt.exceptions.ExpiredSignatureError:
                     return_data = {
@@ -37,6 +38,7 @@ def token_required(something):
                     now = datetime.now()
                     print(str(now)+str(return_data), "COD: 400;")
                     Log.write(str(now)+" "+str(return_data) + "COD: 400;"+"\n")
+                    Log.close()
                     return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 400
                 except:
                     return_data = {
@@ -46,6 +48,7 @@ def token_required(something):
                     now = datetime.now()
                     print(str(now)+str(return_data), "COD: 400;")
                     Log.write(str(now)+" "+str(return_data) + "COD: 400;"+"\n")
+                    Log.close()
                     return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 400
             else:
                 return_data = {
@@ -55,6 +58,7 @@ def token_required(something):
                 now = datetime.now()
                 print(str(now)+str(return_data), "COD: 400;")
                 Log.write(str(now)+" "+str(return_data) + "COD: 400;"+"\n")
+                Log.close()
                 return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 400
         except Exception as e:
             return_data = {
@@ -64,6 +68,7 @@ def token_required(something):
             now = datetime.now()
             print(str(now)+str(return_data), "COD: 500;")
             Log.write(str(now)+" "+str(return_data) + "COD: 500;"+"\n")
+            Log.close()
             return app.response_class(response=json.dumps(return_data), mimetype='application/json'), 500
 
     return wrap
